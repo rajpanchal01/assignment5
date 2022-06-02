@@ -1,0 +1,15 @@
+<div id="<%= dom_id book %>">
+  <p>
+    <strong>Name:</strong>
+    <%= book.name %>
+  </p>
+  <p>
+    <strong>Author:</strong>
+    <%= Author.find(book.author_id).name %>
+  </p>
+  <% book.cover_photos.each do |image|%>
+  <%=image_tag image,style: "height:10vw;width:10vw;" if book.cover_photos.attached?%>
+  
+  <%end%>
+
+</div>
