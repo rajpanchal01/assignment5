@@ -2,9 +2,6 @@ class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show edit update destroy ]
 
   # GET /authors or /authors.json
-  def home
-    @books = Book.all
-  end
   def index
     @authors = Author.all
   end

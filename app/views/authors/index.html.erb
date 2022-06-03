@@ -1,15 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Authors</h1>
 
-<div id="authors">
+<h1>Authors</h1>
+<%= link_to "New author", new_author_path,class:"btn btn-secondary" %>
+
+<%= link_to "Home", root_path,class:"btn btn-primary" %>
+<div id="authors" class="d-flex justify-content-around flex-wrap">
   <% @authors.each do |author| %>
     <%= render author %>
-    <p>
-      <%= link_to "Show this author", author %>
-    </p>
   <% end %>
 </div>
-
-<%= link_to "New author", new_author_path %>
-<%= link_to "Home", root_path %>
+<br>

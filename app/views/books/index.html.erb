@@ -1,15 +1,46 @@
 <p style="color: green"><%= notice %></p>
-
+<div class="container ">
 <h1>Books</h1>
+<%= link_to "Authors",authors_path,class:"btn btn-danger"%>
+<%= link_to "New book", new_book_path,class:"btn btn-secondary" %>
+<br>
+<div class="d-flex justify-content-around flex-wrap">
+<% @books.each do |a| %>
+  <div class="card d-flex" style="width: 25rem;">
+  <div class="container d-flex">
+      <div id="myCarousel_<%=a.id%>" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+          <% a.cover_photos.each.with_index do |image, i| %>
+            <li data-target="#myCarousel_<%=a.id%>" data-slide-to="<%= i %>" class="<%= 'active' if i == 0 %>"></li>
+          <% end %>
+        </ol>
+        <div class="carousel-inner">
+          <% a.cover_photos.each.with_index do |image, i| %>
+            <div class="item <%= 'active' if i == 0 %>">
+              <%= image_tag(image, alt: SecureRandom.uuid,style:"width:22rem;")%>
+            </div>           
+          <% end %>
+        </div>
+        <a class="left carousel-control" href="#myCarousel_<%=a.id%>" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel_<%=a.id%>" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
 
-<div id="books">
-  <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to "Show this book", book_path(book) %>
-    </p>
-  <% end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= a.name%></h5>
+    <p class="card-text">By- <%= Author.find(a.author_id).name%></p>
+    <%= link_to "View",book_path(a),class:"btn btn-primary d-flex justify-content-center"%>
+  </div>
 </div>
-
-<%= link_to "New book", new_book_path %>
-<%= link_to "Home", root_path %>
+<%end%>
+</div>
+<br>
+</div>
+  
+    

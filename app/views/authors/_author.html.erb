@@ -1,21 +1,15 @@
-<div id="<%= dom_id author %>">
-  
-  <p>
-    
-    <%= image_tag author.profile_picture,style: "height:5vw;width:5vw;" if author.profile_picture.attached? %>
-  </p>
-  <p>
-    <strong>Name:</strong>
-    <%= author.name %>
-  </p>
+<div class="d-flex justify-content-around flex-wrap" id="<%= dom_id author %>" >
 
+<div class="card " style="width: 18rem;">
+  <%= image_tag author.profile_picture,class: "image" if author.profile_picture.attached? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= author.name%></h5>
+    <p class="card-text">From:<%= author.address%></p>
+    <p class="card-text">Total Books:<%= author.books.count%></p>
+    <%= link_to "View",author,class:"btn btn-primary"%>
+  </div> 
   <p>
-    <strong>Address:</strong>
-    <%= author.address %>
-  </p>
-  <p>
-    <strong>Total Books:</strong>
-    <%= author.books.count %>
-  </p>
+  </div>
+    
 
 </div>

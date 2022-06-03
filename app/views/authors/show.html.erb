@@ -1,8 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @author %>
+<div class="d-flex flex-wrap" style="width: 18rem;">
+  <%= image_tag @author.profile_picture,class: "image" if @author.profile_picture.attached? %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @author.name%></h5>
+    <p class="card-text">From:<%= @author.address%></p>
+    <p class="card-text">Total Books:<%= @author.books.count%></p>
+   </div>
+  <p>
+  <div class ="books">
+ <%= render :template => "books/index", :locals => {:@books => @author.books}   %>
+  </div> 
+  </div>
 
-<div>
+
   <%= link_to "Edit this author", edit_author_path(@author) %> |
   <%= link_to "Back to authors", authors_path %>
 
