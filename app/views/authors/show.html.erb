@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <div class="d-flex flex-wrap" style="width: 18rem;">
-  <%= image_tag @author.profile_picture,class: "image" if @author.profile_picture.attached? %>
+  <%= image_tag @author.profile_picture,style: "height:10vw;width:10vw;" if @author.profile_picture.attached? %>
   <div class="card-body">
     <h5 class="card-title"><%= @author.name%></h5>
     <p class="card-text">From:<%= @author.address%></p>
